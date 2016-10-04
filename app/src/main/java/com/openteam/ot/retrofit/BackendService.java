@@ -14,7 +14,7 @@ import retrofit2.http.Path;
 
 public interface BackendService {
 
-    public static final String ENDPOINT = "http://private-3afef-openteam.apiary-mock.com";
+    String ENDPOINT = "http://private-3afef-openteam.apiary-mock.com";
 
     @GET("/project/{id}")
     Call<Campaign> getCampaign(@Path("id") int id);
