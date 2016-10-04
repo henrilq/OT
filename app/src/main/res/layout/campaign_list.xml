@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/campaign_list_background"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/open"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:layout_width="0dip"
+            android:text="@string/campaign_list_open_btn"
+            android:background="@drawable/campaign_list_button_selected"
+            android:textSize="12sp"
+            android:layout_marginRight="5dp"
+            />
+
+        <Button
+            android:id="@+id/closed"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:layout_width="0dip"
+            android:text="@string/campaign_list_closed_btn"
+            android:textSize="12sp"
+            android:layout_marginLeft="5dp"/>
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="10dp"
+        android:numColumns="2"
+        android:layout_margin="10dp">
+    </GridView>
+</LinearLayout>

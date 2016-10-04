@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#009691</color>
+    <color name="colorPrimaryDark">#009691</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="drawer_header_color">#0e3938</color>
+    <color name="drawer_body_color">#104140</color>
+    <color name="drawer_item_text_color">#ffffff</color>
+
+    <color name="campaign_list_background">#f1f1f1</color>
+    <color name="btnSelectedColor">#00b4aa</color>
+    <color name="btnUnselectedColor">#ffffff</color>
+    <color name="btnUnselectedTextColor">#315b5a</color>
+
+    <color name="white">#ffffff</color>
+</resources>

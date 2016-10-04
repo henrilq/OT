@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">OT</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="title_campaigns_list">Campaigns list</string>
+    <string name="title_my_campaigns">My Campaigns</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_collaborate">Collaborate</string>
+    <string name="title_about">About</string>
+    <string name="title_tutorial">Tutorial</string>
+
+    <string name="campaign_list_open_btn">Pending</string>
+    <string name="campaign_list_closed_btn">Finished</string>
+
+</resources>
