@@ -1,5 +1,6 @@
 package com.openteam.ot.gui;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -8,7 +9,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.openteam.ot.R;
 import com.openteam.ot.gui.fragment.AbstractFragment;
 import com.openteam.ot.gui.fragment.CampaignListFragment;
+import com.openteam.ot.gui.fragment.MyCampaignListFragment;
 import com.openteam.ot.gui.fragment.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.nav_campaigns_list) {
             replaceFragment(new CampaignListFragment());
         } else if (id == R.id.nav_my_campaigns) {
-
+            replaceFragment(new MyCampaignListFragment());
         } else if (id == R.id.nav_profile) {
             replaceFragment(new ProfileFragment());
         } else if (id == R.id.nav_collaborate) {

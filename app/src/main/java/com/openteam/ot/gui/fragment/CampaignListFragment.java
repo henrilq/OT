@@ -3,7 +3,6 @@ package com.openteam.ot.gui.fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -41,10 +40,14 @@ public class CampaignListFragment extends AbstractFragment{
     private Button closedBtn;
     private BackendService backendService;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        super.title = getResources().getString(R.string.title_campaigns_list);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.title = getResources().getString(R.string.title_campaigns_list);
         View view =  inflater.inflate(R.layout.campaign_list,container,false);
         backendService = getBackendService();
         campaigns = new ArrayList<>();
@@ -58,23 +61,7 @@ public class CampaignListFragment extends AbstractFragment{
             @Override
             public void onClick(View v) {
                 updateButtonsColor(openBtn);
-                Call<List<Campaign>> open = backendService.getOpenCampaigns();
-                open.enqueue(new Callback<List<Campaign>>() {
-                    @Override
-                    public void onResponse(Call<List<Campaign>> call, Response<List<Campaign>> response) {
-                        List<Campaign> campaigns = response.body();
-                        if(campaigns == null){
-                            Log.d(TAG, "No Campaign found");
-                        }else{
-                            loadData(campaigns);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<List<Campaign>> call, Throwable t) {
-                        Log.e(TAG, t.toString());
-                    }
-                });
+                updateGridView(getOpenCampaigns());
             }
         });
 
@@ -83,28 +70,38 @@ public class CampaignListFragment extends AbstractFragment{
             @Override
             public void onClick(View v) {
                 updateButtonsColor(closedBtn);
-                Call<List<Campaign>> closed = backendService.getClosedCompaigns();
-                closed.enqueue(new Callback<List<Campaign>>() {
-                    @Override
-                    public void onResponse(Call<List<Campaign>> call, Response<List<Campaign>> response) {
-                        List<Campaign> campaigns = response.body();
-                        campaigns.remove(0);
-                        if(campaigns == null){
-                            Log.d(TAG, "No Campaign found");
-                        }else{
-                            loadData(campaigns);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<List<Campaign>> call, Throwable t) {
-                        Log.e(TAG, t.toString());
-                    }
-                });
+                updateGridView(getClosedCampaigns());
             }
         });
         updateButtonsColor(null);
         return view;
+    }
+
+    private void updateGridView(Call<List<Campaign>> call){
+        call.enqueue(new Callback<List<Campaign>>() {
+            @Override
+            public void onResponse(Call<List<Campaign>> call, Response<List<Campaign>> response) {
+                List<Campaign> campaigns = response.body();
+                if(campaigns == null){
+                    Log.d(TAG, "No Campaign found");
+                }else{
+                    loadData(campaigns);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Campaign>> call, Throwable t) {
+                Log.e(TAG, t.toString());
+            }
+        });
+    }
+
+    protected Call<List<Campaign>> getOpenCampaigns(){
+        return backendService.getOpenCampaigns();
+    }
+
+    protected Call<List<Campaign>> getClosedCampaigns(){
+        return backendService.getClosedCompaigns();
     }
 
     private void updateButtonsColor(Button selectedBtn){
