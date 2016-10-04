@@ -1,6 +1,7 @@
 package com.openteam.ot.gui.adapter;
 
 import android.content.Context;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.openteam.ot.R;
 import com.openteam.ot.gui.custom.RoundedCornersTransformation;
 import com.openteam.ot.model.Campaign;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -34,32 +36,50 @@ public class CampaignListGridViewAdapter extends BaseAdapter{
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View gridView;
+        final Handler handler = new Handler();
+        final View itemView;
 
         if(campaigns == null){
-            gridView = parent;
+            itemView = parent;
         }else if (convertView == null) {
-            gridView = new View(context);
-            gridView = inflater.inflate(R.layout.campaign_list_item, null);
-
-            Campaign campaign = campaigns.get(position);
-
+            itemView = inflater.inflate(R.layout.campaign_list_item, null);
+            itemView.setVisibility(View.INVISIBLE);
+            final Campaign campaign = campaigns.get(position);
+            final TextView title = (TextView) itemView.findViewById(R.id.title);
+            final TextView description = (TextView) itemView.findViewById(R.id.description);
             //load image
-            ImageView imageView = (ImageView) gridView.findViewById(R.id.image);
-            Picasso.with(context).load(campaign.getPicture_url()).transform(new RoundedCornersTransformation(15,15)).into(imageView);
-            //insert title
-            TextView title = (TextView) gridView.findViewById(R.id.title);
-            title.setText(campaign.getCampaign_title());
+            ImageView imageView = (ImageView) itemView.findViewById(R.id.image);
 
-            //insert description
-            TextView description = (TextView) gridView.findViewById(R.id.description);
-            description.setText(campaign.getId());
+            Callback callback = new Callback() {
+                @Override
+                public void onSuccess() {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            //insert title
+                            title.setText(campaign.getCampaign_title());
+
+                            //insert description
+                            description.setText(campaign.getId());
+
+                            itemView.setVisibility(View.VISIBLE);
+                        }
+                    });
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            };
+
+            Picasso.with(context).load(campaign.getPicture_url()).transform(new RoundedCornersTransformation(15,15)).into(imageView, callback);
 
         } else {
-            gridView = (View) convertView;
+            itemView = convertView;
         }
 
-        return gridView;
+        return itemView;
     }
 
     @Override
