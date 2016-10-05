@@ -1,10 +1,12 @@
 package com.openteam.ot.model;
 
+import java.io.Serializable;
+
 /**
  * Created by zoz on 27/09/2016.
  */
 
-public class Campaign {
+public class Campaign implements Serializable{
     private String id;
     private String project_title;
     private String campaign_title;

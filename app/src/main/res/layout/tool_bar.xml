@@ -18,9 +18,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title_campaigns_list"
-        android:textColor="#ffffff"
-        android:id="@+id/title"
-        android:textSize="18sp"
+        android:id="@+id/toolbar_title"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:layout_centerInParent="true"/>
 
 </RelativeLayout>

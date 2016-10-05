@@ -13,13 +13,8 @@ import android.widget.TextView;
 
 import com.openteam.ot.R;
 import com.openteam.ot.model.Campaign;
-import com.openteam.ot.service.BackendManager;
-import com.openteam.ot.service.BackendService;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
-
-import retrofit2.Call;
-import retrofit2.Response;
 
 
 /**
@@ -40,25 +35,30 @@ public class CampaignDetailsActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.campaign_details);
+        overridePendingTransition(0, R.anim.splash_fade_out);
         handler = new Handler();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         toolbar.setContentInsetsAbsolute(0, 0);
         //toolbar.setPadding(50,0,50,0);//for tab otherwise give space in tab
+
+        TextView title = (TextView) toolbar.findViewById(R.id.toolbar_title);
+        title.setText(getResources().getString(R.string.title_campaigns_list).toUpperCase());
 
         ImageView arrow = (ImageView) toolbar.findViewById(R.id.arrow);
         arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
+                CampaignDetailsActivity.this.overridePendingTransition(0, R.anim.splash_fade_out);
             }
         });
 
-        Object id = getIntent().getExtras().get("id");
-        if(id != null){
-            BackendService backendService = BackendManager.getBackendService();
+        Object obj = getIntent().getSerializableExtra("obj");
+        if(obj != null){
+            bindData((Campaign) obj);
+            /*BackendService backendService = BackendManager.getBackendService();
             Call<Campaign> call = backendService.getCampaign(Integer.valueOf(""+id));
             call.enqueue(new retrofit2.Callback<Campaign>() {
                 @Override
@@ -75,7 +75,7 @@ public class CampaignDetailsActivity extends AppCompatActivity {
                 public void onFailure(Call<Campaign> call, Throwable t) {
                     Log.e(TAG, t.toString());
                 }
-            });
+            });*/
         }
     }
 
@@ -115,4 +115,9 @@ public class CampaignDetailsActivity extends AppCompatActivity {
         Picasso.with(this).load(campaign.getPicture_url()).resize(width,width).centerInside().into(mainImage, callback);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        CampaignDetailsActivity.this.overridePendingTransition(0, R.anim.splash_fade_out);
+    }
 }
