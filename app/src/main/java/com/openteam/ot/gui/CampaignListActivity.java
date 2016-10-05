@@ -13,7 +13,7 @@ import android.widget.GridView;
 import com.openteam.ot.R;
 import com.openteam.ot.gui.adapter.CampaignListGridViewAdapter;
 import com.openteam.ot.model.Campaign;
-import com.openteam.ot.retrofit.BackendService;
+import com.openteam.ot.service.BackendService;
 
 import java.util.ArrayList;
 import java.util.List;

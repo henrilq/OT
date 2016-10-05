@@ -13,5 +13,7 @@
     <color name="btnUnselectedColor">#ffffff</color>
     <color name="btnUnselectedTextColor">#315b5a</color>
 
+    <color name="campaign_detail_grey">#f2f2f2</color>
+
     <color name="white">#ffffff</color>
 </resources>

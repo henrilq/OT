@@ -1,4 +1,4 @@
-package com.openteam.ot.retrofit;
+package com.openteam.ot.service;
 
 import com.openteam.ot.model.Campaign;
 

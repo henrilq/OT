@@ -1,5 +1,6 @@
 package com.openteam.ot.gui.fragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,13 +9,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 
 import com.openteam.ot.R;
+import com.openteam.ot.gui.CampaignDetailsActivity;
 import com.openteam.ot.gui.adapter.CampaignListGridViewAdapter;
 import com.openteam.ot.model.Campaign;
-import com.openteam.ot.retrofit.BackendService;
+import com.openteam.ot.service.BackendManager;
+import com.openteam.ot.service.BackendService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,17 +58,30 @@ public class CampaignListFragment extends AbstractFragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.campaign_list,container,false);
-        backendService = getBackendService();
+        backendService = BackendManager.getBackendService();
         campaigns = new ArrayList<>();
 
         gridView = (GridView) view.findViewById(R.id.grid);
         adapter = new CampaignListGridViewAdapter(getActivity(), campaigns);
         gridView.setAdapter(adapter);
 
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Campaign campaign = campaigns.get(position);
+                Intent intent = new Intent(getActivity(), CampaignDetailsActivity.class);
+                Bundle args = new Bundle();
+                args.putString("id",campaign.getId());
+                intent.putExtras(args);
+                startActivity(intent);
+            }
+        });
+
         openBtn = (Button) view.findViewById(R.id.open);
         openBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                gridView.setAnimation(createAnimation());
                 updateButtonsColor(openBtn);
                 updateGridView(getOpenCampaigns());
             }
@@ -69,6 +91,7 @@ public class CampaignListFragment extends AbstractFragment{
         closedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                gridView.setAnimation(createAnimation());
                 updateButtonsColor(closedBtn);
                 updateGridView(getClosedCampaigns());
             }
@@ -104,6 +127,22 @@ public class CampaignListFragment extends AbstractFragment{
         return backendService.getClosedCompaigns();
     }
 
+    protected AnimationSet createAnimation(){
+        Animation fadeIn = new AlphaAnimation(0, 1);
+        fadeIn.setInterpolator(new DecelerateInterpolator());
+        fadeIn.setDuration(500);
+
+        Animation fadeOut = new AlphaAnimation(1, 0);
+        fadeOut.setInterpolator(new AccelerateInterpolator());
+        //fadeOut.setStartOffset(1000);
+        fadeOut.setDuration(1000);
+
+        AnimationSet animation = new AnimationSet(false);
+        //animation.addAnimation(fadeOut);
+        animation.addAnimation(fadeIn);
+        return animation;
+    }
+
     private void updateButtonsColor(Button selectedBtn){
         openBtn.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.campaign_list_button_unselected));
         closedBtn.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.campaign_list_button_unselected));
@@ -114,14 +153,6 @@ public class CampaignListFragment extends AbstractFragment{
             selectedBtn.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.campaign_list_button_selected));
             selectedBtn.setTextColor(Color.WHITE);
         }
-    }
-
-    private BackendService getBackendService(){
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(BackendService.ENDPOINT)
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        return retrofit.create(BackendService.class);
     }
 
     private void loadData(List<Campaign> campaigns){

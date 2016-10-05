@@ -2,6 +2,7 @@ package com.openteam.ot.gui.adapter;
 
 import android.content.Context;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import java.util.List;
 
 public class CampaignListGridViewAdapter extends BaseAdapter{
 
+    private static final String TAG = "CampLiGridViewAdapter";
     private Context context;
     private List<Campaign> campaigns;
 
@@ -69,7 +71,7 @@ public class CampaignListGridViewAdapter extends BaseAdapter{
 
                 @Override
                 public void onError() {
-
+                    Log.e(TAG,"image not loaded");
                 }
             };
 

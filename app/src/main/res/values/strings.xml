@@ -13,4 +13,7 @@
     <string name="campaign_list_open_btn">Pending</string>
     <string name="campaign_list_closed_btn">Finished</string>
 
+    <string name="campaign_detail_mission">Mission</string>
+    <string name="campaign_detail_why_support">Pourquoi nous soutenir</string>
+
 </resources>
