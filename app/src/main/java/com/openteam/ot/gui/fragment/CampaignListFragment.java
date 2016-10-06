@@ -9,12 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
@@ -32,9 +28,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by zoz on 04/10/2016.
@@ -72,7 +65,6 @@ public class CampaignListFragment extends AbstractFragment{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Campaign campaign = campaigns.get(position);
                 Intent intent = new Intent(getActivity(), CampaignDetailsActivity.class);
-                Bundle args = new Bundle();
                 intent.putExtra("obj",campaign);
                 startActivity(intent);
             }
@@ -129,7 +121,7 @@ public class CampaignListFragment extends AbstractFragment{
     protected Call<List<Campaign>> getClosedCampaigns(){
         return backendService.getClosedCompaigns();
     }
-    
+
     private void updateButtonsColor(Button selectedBtn){
         openBtn.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.campaign_list_button_unselected));
         closedBtn.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.campaign_list_button_unselected));
