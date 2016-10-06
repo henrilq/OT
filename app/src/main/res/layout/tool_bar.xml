@@ -5,11 +5,15 @@
     android:orientation="horizontal"
     android:background="@null">
 
-    <ImageView
+    <ImageButton
         android:id="@+id/arrow"
-        android:layout_width="15dp"
-        android:layout_height="35dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:minHeight="0dp"
         android:src="@drawable/previous_arrow"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        android:background="@null"
         android:layout_centerVertical="true"
         />
 
