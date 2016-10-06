@@ -15,5 +15,6 @@
 
     <string name="campaign_detail_mission">Mission</string>
     <string name="campaign_detail_why_support">Pourquoi nous soutenir</string>
+    <string name="campaign_detail_support">Soutenir !</string>
 
 </resources>
