@@ -129,23 +129,7 @@ public class CampaignListFragment extends AbstractFragment{
     protected Call<List<Campaign>> getClosedCampaigns(){
         return backendService.getClosedCompaigns();
     }
-
-    protected AnimationSet createAnimation(){
-        Animation fadeIn = new AlphaAnimation(0, 1);
-        fadeIn.setInterpolator(new DecelerateInterpolator());
-        fadeIn.setDuration(250);
-
-        Animation fadeOut = new AlphaAnimation(1, 0);
-        fadeOut.setInterpolator(new AccelerateInterpolator());
-        //fadeOut.setStartOffset(1000);
-        fadeOut.setDuration(250);
-
-        AnimationSet animation = new AnimationSet(false);
-        //animation.addAnimation(fadeOut);
-        animation.addAnimation(fadeIn);
-        return animation;
-    }
-
+    
     private void updateButtonsColor(Button selectedBtn){
         openBtn.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.campaign_list_button_unselected));
         closedBtn.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.campaign_list_button_unselected));
