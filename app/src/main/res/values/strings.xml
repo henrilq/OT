@@ -14,7 +14,15 @@
     <string name="campaign_list_closed_btn">Finished</string>
 
     <string name="campaign_detail_mission">Mission</string>
-    <string name="campaign_detail_why_support">Pourquoi nous soutenir</string>
+    <string name="campaign_detail_why_support">Pourquoi nous soutenir ?</string>
     <string name="campaign_detail_support">Soutenir !</string>
+
+    <string name="payment_confirmation_toolbar_title">MERCI</string>
+    <string name="payment_confirmation_amount">1 € envoyé !</string>
+    <string name="payment_confirmation_thanks">Merci d'avoir soutenu le projet :</string>
+    <string name="payment_confirmation_title">Spiral farm house</string>
+
+    <string name="gen_continue">Continuer ></string>
+
 
 </resources>

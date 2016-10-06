@@ -1,14 +1,12 @@
 package com.openteam.ot.gui;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
@@ -23,19 +21,17 @@ import com.openteam.ot.gui.fragment.CampaignListFragment;
 import com.openteam.ot.gui.fragment.MyCampaignListFragment;
 import com.openteam.ot.gui.fragment.ProfileFragment;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AbstractActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "MainActivity";
     private NavigationView navigationView;
     private Toolbar toolbar;
     private TextView toolbarTitle;
-    private Handler handler;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        handler = new Handler();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -78,19 +74,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    @Override
+    protected int getReplaceableFragmentContainerId() {
+        return R.id.content_main;
+    }
+
     public void replaceFragment(final AbstractFragment fragment){
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-        transaction.replace(R.id.content_main, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        super.replaceFragment(fragment);
         handler.post(new Runnable() {
             @Override
             public void run() {
                 toolbarTitle.setText(fragment.getTitle().toUpperCase());
             }
         });
-
     }
 
     public int getStatusBarHeight() {

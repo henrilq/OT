@@ -3,11 +3,11 @@ package com.openteam.ot.gui;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,7 +21,7 @@ import com.squareup.picasso.Picasso;
  * Created by zoz on 05/10/2016.
  */
 
-public class CampaignDetailsActivity extends AppCompatActivity {
+public class CampaignDetailsActivity extends AbstractActivity {
 
     private static final String TAG = "CampaignDetailsActivity";
     private Handler handler;
@@ -46,7 +46,7 @@ public class CampaignDetailsActivity extends AppCompatActivity {
         TextView title = (TextView) toolbar.findViewById(R.id.toolbar_title);
         title.setText(getResources().getString(R.string.title_campaigns_list).toUpperCase());
 
-        ImageView arrow = (ImageView) toolbar.findViewById(R.id.arrow);
+        ImageButton arrow = (ImageButton) toolbar.findViewById(R.id.arrow);
         arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +77,11 @@ public class CampaignDetailsActivity extends AppCompatActivity {
                 }
             });*/
         }
+    }
+
+    @Override
+    protected int getReplaceableFragmentContainerId() {
+        return R.id.campaign_detail_central;
     }
 
     private void bindData(final Campaign campaign) {

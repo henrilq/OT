@@ -24,6 +24,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <RelativeLayout
+        android:id="@+id/campaign_detail_central"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -142,10 +143,4 @@
             </LinearLayout>
         </ScrollView>
     </RelativeLayout>
-    <!--<android.support.design.widget.FloatingActionButton
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:textAlignment="center"
-        android:background="@color/orange"
-        android:layout_gravity="bottom|end"/>-->
 </LinearLayout>
