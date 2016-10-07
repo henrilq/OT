@@ -46,7 +46,11 @@ public abstract class BasicActivity extends AbstractActivity {
         arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                if(getSupportFragmentManager().getBackStackEntryCount() > 1){
+                    getSupportFragmentManager().popBackStack();
+                }else{
+                    finish();
+                }
                 BasicActivity.this.overridePendingTransition(0, R.anim.splash_fade_out);
             }
         });

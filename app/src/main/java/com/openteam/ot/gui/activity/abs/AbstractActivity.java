@@ -30,6 +30,15 @@ public abstract class AbstractActivity extends AppCompatActivity {
         replaceFragment(fragment, getReplaceableFragmentContainerId(), R.anim.fade_in, R.anim.fade_out);
     }
 
+    public void replaceFragment(final AbstractFragment fragment, @AnimRes int enter,
+                                @AnimRes int exit){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(enter, exit);
+        transaction.replace(getReplaceableFragmentContainerId(), fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
     public void replaceFragment(final AbstractFragment fragment, @IdRes int containerViewId, @AnimRes int enter,
                                 @AnimRes int exit){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
