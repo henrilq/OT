@@ -22,8 +22,8 @@
     <string name="payment_confirmation_thanks">Merci d\'avoir soutenu le projet :</string>
     <string name="payment_confirmation_title">Spiral farm house</string>
 
-    <string name="gen_continue">Continuer ></string>
-    <string name="gen_confirm">Confirmer ></string>
+    <string name="gen_continue">Continue ></string>
+    <string name="gen_confirm">Confirm ></string>
 
 
     <string name="surname">Surname</string>
