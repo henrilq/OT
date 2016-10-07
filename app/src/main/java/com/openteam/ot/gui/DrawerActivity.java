@@ -3,7 +3,6 @@ package com.openteam.ot.gui;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -21,9 +20,9 @@ import com.openteam.ot.gui.fragment.CampaignListFragment;
 import com.openteam.ot.gui.fragment.MyCampaignListFragment;
 import com.openteam.ot.gui.fragment.ProfileFragment;
 
-public class MainActivity extends AbstractActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class DrawerActivity extends AbstractActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "DrawerActivity";
     private NavigationView navigationView;
     private Toolbar toolbar;
     private TextView toolbarTitle;
@@ -31,7 +30,7 @@ public class MainActivity extends AbstractActivity implements NavigationView.OnN
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.drawer_main);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

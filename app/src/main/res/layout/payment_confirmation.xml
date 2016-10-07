@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        app:layout_widthPercent="20%"
+        app:layout_heightPercent="20%"
+        app:layout_marginTopPercent="5%"
+        android:src="@drawable/heart_money"
+        android:layout_centerHorizontal="true"
+        />/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_marginTopPercent="30%"
+        android:text="@string/payment_confirmation_amount"
+        android:textColor="@color/orange"
+        android:layout_centerHorizontal="true"/>
+
+
+    <TextView
+        android:id="@+id/central_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/payment_confirmation_thanks"
+        android:textColor="@color/dark_green"
+        android:layout_centerInParent="true"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_marginTopPercent="55%"
+        android:text="@string/payment_confirmation_title"
+        android:textColor="@color/green"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageView
+        app:layout_widthPercent="20%"
+        app:layout_heightPercent="20%"
+        app:layout_marginTopPercent="70%"
+        android:src="@drawable/save"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:textSize="20sp"
+        android:text="@string/gen_continue"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:background="@color/orange"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"/>
+
+</android.support.percent.PercentRelativeLayout>
