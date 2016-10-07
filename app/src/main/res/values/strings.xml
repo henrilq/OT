@@ -19,7 +19,7 @@
 
     <string name="payment_confirmation_toolbar_title">MERCI</string>
     <string name="payment_confirmation_amount">1 € envoyé !</string>
-    <string name="payment_confirmation_thanks">Merci d'avoir soutenu le projet :</string>
+    <string name="payment_confirmation_thanks">Merci d\'avoir soutenu le projet :</string>
     <string name="payment_confirmation_title">Spiral farm house</string>
 
     <string name="gen_continue">Continuer ></string>

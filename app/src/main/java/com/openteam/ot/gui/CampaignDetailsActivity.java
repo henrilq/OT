@@ -2,7 +2,6 @@ package com.openteam.ot.gui;
 
 import android.graphics.Point;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Display;
@@ -12,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.openteam.ot.R;
+import com.openteam.ot.gui.fragment.PaymentConfirmationFragment;
 import com.openteam.ot.model.Campaign;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -24,8 +24,10 @@ import com.squareup.picasso.Picasso;
 public class CampaignDetailsActivity extends AbstractActivity {
 
     private static final String TAG = "CampaignDetailsActivity";
-    private Handler handler;
     private Toolbar toolbar;
+    private TextView title;
+    private ImageButton arrow;
+    private TextView supportButton;
 
     public CampaignDetailsActivity(){
 
@@ -36,24 +38,19 @@ public class CampaignDetailsActivity extends AbstractActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.campaign_details);
         overridePendingTransition(0, R.anim.splash_fade_out);
-        handler = new Handler();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setContentInsetsAbsolute(0, 0);
         //toolbar.setPadding(50,0,50,0);//for tab otherwise give space in tab
 
-        TextView title = (TextView) toolbar.findViewById(R.id.toolbar_title);
+        title = (TextView) toolbar.findViewById(R.id.toolbar_title);
         title.setText(getResources().getString(R.string.title_campaigns_list).toUpperCase());
+        arrow = (ImageButton) toolbar.findViewById(R.id.arrow);
 
-        ImageButton arrow = (ImageButton) toolbar.findViewById(R.id.arrow);
-        arrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                CampaignDetailsActivity.this.overridePendingTransition(0, R.anim.splash_fade_out);
-            }
-        });
+        supportButton = (TextView) findViewById(R.id.support_button);
+
+        initListeners();
 
         Object obj = getIntent().getSerializableExtra("obj");
         if(obj != null){
@@ -80,6 +77,25 @@ public class CampaignDetailsActivity extends AbstractActivity {
     }
 
     @Override
+    protected void initListeners() {
+        arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                CampaignDetailsActivity.this.overridePendingTransition(0, R.anim.splash_fade_out);
+            }
+        });
+
+        supportButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new PaymentConfirmationFragment());
+            }
+        });
+    }
+
+
+    @Override
     protected int getReplaceableFragmentContainerId() {
         return R.id.campaign_detail_central;
     }
@@ -99,6 +115,7 @@ public class CampaignDetailsActivity extends AbstractActivity {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
+                        title.setText(campaign.getProject_title().toUpperCase());
                         subtitle.setText(campaign.getProject_title());
                         country.setText(campaign.getCountry());
                         mission.setText(campaign.getMission());

@@ -89,6 +89,11 @@ public class MainActivity extends AbstractActivity implements NavigationView.OnN
         });
     }
 
+    @Override
+    protected void initListeners() {
+
+    }
+
     public int getStatusBarHeight() {
         int result = 0;
         int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");

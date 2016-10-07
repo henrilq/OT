@@ -60,6 +60,18 @@ public class CampaignListFragment extends AbstractFragment{
         adapter = new CampaignListGridViewAdapter(getActivity(), campaigns);
         gridView.setAdapter(adapter);
 
+        animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in);
+        gridView.setAnimation(animation);
+        openBtn = (Button) view.findViewById(R.id.open);
+
+        closedBtn = (Button) view.findViewById(R.id.closed);
+
+        updateButtonsColor(null);
+        return view;
+    }
+
+    @Override
+    public void initListeners() {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -70,9 +82,6 @@ public class CampaignListFragment extends AbstractFragment{
             }
         });
 
-        animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in);
-        gridView.setAnimation(animation);
-        openBtn = (Button) view.findViewById(R.id.open);
         openBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +91,6 @@ public class CampaignListFragment extends AbstractFragment{
             }
         });
 
-        closedBtn = (Button) view.findViewById(R.id.closed);
         closedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,8 +99,6 @@ public class CampaignListFragment extends AbstractFragment{
                 updateGridView(getClosedCampaigns());
             }
         });
-        updateButtonsColor(null);
-        return view;
     }
 
     private void updateGridView(Call<List<Campaign>> call){
