@@ -18,7 +18,7 @@
             android:paddingRight="15dp"
             android:background="?attr/colorPrimary">
 
-            <include layout="@layout/tool_bar"/>
+            <include android:id="@+id/basic_toolbar" layout="@layout/tool_bar"/>
 
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>

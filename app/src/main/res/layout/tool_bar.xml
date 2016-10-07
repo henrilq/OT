@@ -10,6 +10,7 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:minHeight="0dp"
+        android:layout_marginLeft="10dp"
         android:src="@drawable/previous_arrow"
         android:scaleType="centerInside"
         android:adjustViewBounds="true"

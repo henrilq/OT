@@ -23,6 +23,17 @@
     <string name="payment_confirmation_title">Spiral farm house</string>
 
     <string name="gen_continue">Continuer ></string>
+    <string name="gen_confirm">Confirmer ></string>
+
+
+    <string name="surname">Surname</string>
+    <string name="name">Name</string>
+    <string name="email">Email address</string>
+    <string name="password">Password</string>
+    <string name="city_country">City, Country</string>
+    <string name="or">Or :</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign up</string>
 
 
 </resources>

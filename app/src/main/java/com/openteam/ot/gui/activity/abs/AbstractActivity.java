@@ -1,4 +1,4 @@
-package com.openteam.ot.gui;
+package com.openteam.ot.gui.activity.abs;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,6 +22,7 @@ public abstract class AbstractActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(getContentView());
         handler = new Handler();
     }
 
@@ -51,6 +52,8 @@ public abstract class AbstractActivity extends AppCompatActivity {
      * @return replaceable fragment container id
      */
     protected abstract int getReplaceableFragmentContainerId();
+
+    protected abstract int getContentView();
 
 
 }

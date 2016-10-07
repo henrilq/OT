@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
-import com.openteam.ot.gui.AbstractActivity;
+import com.openteam.ot.gui.activity.abs.AbstractActivity;
 
 /**
  * Created by zoz on 04/10/2016.

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/campaign_list_background"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/facebook"/>
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:src="@drawable/linkedin"/>
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:src="@drawable/twitter"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:text="@string/or" />
+
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/surname"
+                android:maxLines="1"
+                android:inputType="text"
+                android:textSize="@dimen/sign_field_text_size"
+                android:backgroundTint="@color/dark_ultra_green"
+                android:paddingBottom="@dimen/sign_field_padding_bottom"
+                android:layout_marginBottom="@dimen/sign_field_margin_bottom"/>
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/text2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/name"
+                android:maxLines="1"
+                android:inputType="text"
+                android:textSize="@dimen/sign_field_text_size"
+                android:backgroundTint="@color/dark_ultra_green"
+                android:paddingBottom="@dimen/sign_field_padding_bottom"
+                android:layout_marginBottom="@dimen/sign_field_margin_bottom"/>
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/text3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/email"
+                android:maxLines="1"
+                android:inputType="textEmailAddress"
+                android:textSize="@dimen/sign_field_text_size"
+                android:backgroundTint="@color/dark_ultra_green"
+                android:paddingBottom="@dimen/sign_field_padding_bottom"
+                android:layout_marginBottom="@dimen/sign_field_margin_bottom"/>
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/text4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:maxLines="1"
+                android:inputType="textPassword"
+                android:textSize="@dimen/sign_field_text_size"
+                android:backgroundTint="@color/dark_ultra_green"
+                android:paddingBottom="@dimen/sign_field_padding_bottom"
+                android:layout_marginBottom="@dimen/sign_field_margin_bottom"/>
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/text5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/city_country"
+                android:maxLines="1"
+                android:inputType="text"
+                android:textSize="@dimen/sign_field_text_size"
+                android:backgroundTint="@color/dark_ultra_green"
+                android:paddingBottom="@dimen/sign_field_padding_bottom"
+                android:layout_marginBottom="@dimen/sign_field_margin_bottom"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="@string/sign_in" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:textSize="20sp"
+        android:text="@string/gen_confirm"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:background="@color/dark_green"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

@@ -16,7 +16,7 @@ import android.widget.Button;
 import android.widget.GridView;
 
 import com.openteam.ot.R;
-import com.openteam.ot.gui.BasicActivity;
+import com.openteam.ot.gui.activity.CampaignDetailsActivity;
 import com.openteam.ot.gui.adapter.CampaignListGridViewAdapter;
 import com.openteam.ot.model.Campaign;
 import com.openteam.ot.service.BackendManager;
@@ -76,7 +76,7 @@ public class CampaignListFragment extends AbstractFragment{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Campaign campaign = campaigns.get(position);
-                Intent intent = new Intent(getActivity(), BasicActivity.class);
+                Intent intent = new Intent(getActivity(), CampaignDetailsActivity.class);
                 intent.putExtra("obj",campaign);
                 startActivity(intent);
             }

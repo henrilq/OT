@@ -1,4 +1,4 @@
-package com.openteam.ot.gui;
+package com.openteam.ot.gui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.openteam.ot.R;
+import com.openteam.ot.gui.activity.abs.AbstractActivity;
 import com.openteam.ot.gui.fragment.AbstractFragment;
 import com.openteam.ot.gui.fragment.CampaignListFragment;
 import com.openteam.ot.gui.fragment.MyCampaignListFragment;
@@ -30,8 +31,6 @@ public class DrawerActivity extends AbstractActivity implements NavigationView.O
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.drawer_main);
-
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbarTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
@@ -49,6 +48,11 @@ public class DrawerActivity extends AbstractActivity implements NavigationView.O
 
         centerLogoInDrawerHeader();
 
+    }
+
+    @Override
+    protected int getContentView() {
+        return R.layout.drawer_main;
     }
 
     @Override
