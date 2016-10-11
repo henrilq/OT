@@ -15,7 +15,7 @@ import com.openteam.ot.gui.activity.DrawerActivity;
  * Created by zoz on 07/10/2016.
  */
 
-public class SignInValidationFragment extends AbstractFragment {
+public class SignUpValidationFragment extends AbstractFragment {
 
 
     private TextView confirm;
@@ -23,9 +23,8 @@ public class SignInValidationFragment extends AbstractFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.sign_in_validation,container,false);
+        View view =  inflater.inflate(R.layout.sign_up_validation,container,false);
         confirm = (TextView) view.findViewById(R.id.sign_up_confirm_validation);
-
         return view;
     }
 

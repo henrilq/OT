@@ -56,7 +56,7 @@ public class SignUpFragment extends AbstractFragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         initFacebook();
         initTwitter();
-        View view =  inflater.inflate(R.layout.sign_in,container,false);
+        View view =  inflater.inflate(R.layout.sign_up,container,false);
         confirmBtn = (TextView) view.findViewById(R.id.sign_up_confirm);
         facebookBtn = (ImageView) view.findViewById(R.id.facebook);
         twitterBtn = (ImageView) view.findViewById(R.id.twitter);
@@ -69,7 +69,7 @@ public class SignUpFragment extends AbstractFragment{
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getAbsActivity().replaceFragment(new SignInValidationFragment(), R.anim.trans_left_in, R.anim.trans_left_out);
+                getAbsActivity().replaceFragment(new SignUpValidationFragment(), R.anim.trans_left_in, R.anim.trans_left_out);
             }
         });
 
