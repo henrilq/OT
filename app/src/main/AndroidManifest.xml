@@ -10,6 +10,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="f65f21b1b86a53544771aa65b4e30757a451bbde"
+            />
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+
         <activity android:name=".gui.activity.DrawerActivity">
 
         </activity>
@@ -24,6 +32,14 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".gui.activity.TwitterActivity">
+
+        </activity>
+
+        <activity android:name=".gui.activity.FacebookActivity">
+
         </activity>
     </application>
 

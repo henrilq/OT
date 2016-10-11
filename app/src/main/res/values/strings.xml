@@ -2,6 +2,7 @@
     <string name="app_name">OT</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="facebook_app_id">370586286665170</string>
 
     <string name="title_campaigns_list">Campaigns list</string>
     <string name="title_my_campaigns">My Campaigns</string>

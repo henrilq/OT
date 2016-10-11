@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
 
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
@@ -11,6 +15,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -35,4 +40,10 @@ dependencies {
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
 
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile('com.twitter.sdk.android:twitter:2.1.0@aar') {
+        transitive = true;
+    }
+    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
 }
+
+
