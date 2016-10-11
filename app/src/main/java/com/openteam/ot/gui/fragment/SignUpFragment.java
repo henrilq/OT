@@ -69,7 +69,7 @@ public class SignUpFragment extends AbstractFragment{
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getAbsActivity().replaceFragment(new SignUpValidationFragment(), R.anim.trans_left_in, R.anim.trans_left_out);
+                signUpValidation();
             }
         });
 
@@ -94,6 +94,10 @@ public class SignUpFragment extends AbstractFragment{
                 mTwitterAuthClient.authorize(getActivity(), createTwitterCallback());
             }
         });
+    }
+
+    private void signUpValidation(){
+        getAbsActivity().replaceFragment(new SignUpValidationFragment(), R.anim.trans_left_in, R.anim.trans_left_out);
     }
 
     private void initFacebook(){
@@ -125,6 +129,7 @@ public class SignUpFragment extends AbstractFragment{
                                     String name = object.getString("name");
 
                                     Toast.makeText(getActivity(), "FACEBOOK :  "+name+ " "+email, Toast.LENGTH_LONG).show();
+                                    signUpValidation();
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -157,11 +162,9 @@ public class SignUpFragment extends AbstractFragment{
                 // The TwitterSession is also available through:
                 // Twitter.getInstance().core.getSessionManager().getActiveSession()
                 TwitterSession session = result.data;
-                // TODO: Remove toast and use the TwitterSession's userID
-                // with your app's user model
-
                 String msg = "TWITTER : " + session.getUserName() + " logged in! (#" + session.getAuthToken() + ")";
                 Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
+                signUpValidation();
             }
             @Override
             public void failure(TwitterException exception) {

@@ -32,6 +32,7 @@
     <string name="email">Email address</string>
     <string name="password">Password</string>
     <string name="city_country">City, Country</string>
+    <string name="phone_number">Phone number</string>
     <string name="or">Or :</string>
     <string name="sign_in">Sign in</string>
     <string name="sign_up">Sign up</string>

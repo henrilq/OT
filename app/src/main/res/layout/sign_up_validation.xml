@@ -3,6 +3,42 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="30dp"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/phone_number_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/phone_number"
+            android:maxLines="1"
+            android:maxLength="20"
+            android:inputType="phone"
+            android:textSize="@dimen/sign_up_validation_phone_text_size"
+            android:backgroundTint="@color/dark_ultra_green"
+            android:paddingBottom="@dimen/sign_field_padding_bottom"
+            android:layout_marginBottom="@dimen/sign_field_margin_bottom"
+            android:layout_centerInParent="true"/>
+
+
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back_to_normal"/>
+
+    </RelativeLayout>
+
+
+
+
     <TextView
         android:id="@+id/sign_up_confirm_validation"
         android:layout_width="match_parent"
