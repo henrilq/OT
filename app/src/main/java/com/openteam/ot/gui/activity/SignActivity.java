@@ -31,7 +31,7 @@ public class SignActivity extends BasicActivity {
     @Override
     public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        //Horrible but it works !
+        //Horrible but it works ! (needed with facebook & twitter signup)
         if(activeFragment != null && activeFragment.isVisible()){
             activeFragment.onActivityResult(requestCode, resultCode, data);
         }
