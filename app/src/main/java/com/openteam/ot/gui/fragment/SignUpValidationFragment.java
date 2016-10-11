@@ -11,12 +11,16 @@ import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.openteam.ot.R;
 import com.openteam.ot.gui.activity.DrawerActivity;
 import com.openteam.ot.utils.PermissionUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by zoz on 07/10/2016.
@@ -29,6 +33,7 @@ public class SignUpValidationFragment extends AbstractFragment {
     private TextView confirm;
     private ImageView deleteBtn;
     private TextView phoneNumberText;
+    private List<View> buttons;
 
     @Nullable
     @Override
@@ -38,12 +43,28 @@ public class SignUpValidationFragment extends AbstractFragment {
         phoneNumberText = (TextView) view.findViewById(R.id.phone_number_text);
         confirm = (TextView) view.findViewById(R.id.sign_up_confirm_validation);
         deleteBtn = (ImageView) view.findViewById(R.id.delete);
+
+        buttons = new ArrayList<>();
+        buttons.add(view.findViewById(R.id.key_1));
+        buttons.add(view.findViewById(R.id.key_2));
+        buttons.add(view.findViewById(R.id.key_3));
+        buttons.add(view.findViewById(R.id.key_4));
+        buttons.add(view.findViewById(R.id.key_5));
+        buttons.add(view.findViewById(R.id.key_6));
+        buttons.add(view.findViewById(R.id.key_7));
+        buttons.add(view.findViewById(R.id.key_8));
+        buttons.add(view.findViewById(R.id.key_9));
+        buttons.add(view.findViewById(R.id.key_0));
+
+
         requestPermissions(new String[]{Manifest.permission.READ_PHONE_STATE}, PackageManager.PERMISSION_GRANTED);
         return view;
     }
 
     @Override
     public void initListeners() {
+        phoneNumberText.setKeyListener(null);
+
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,9 +77,17 @@ public class SignUpValidationFragment extends AbstractFragment {
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                phoneNumberText.setText("");
+                CharSequence charSequence = phoneNumberText.getText();
+                if(charSequence != null && charSequence.length() > 0){
+                    String value = String.valueOf(charSequence);
+                    phoneNumberText.setText(value.substring(0, value.length()-1));
+                }
             }
         });
+        View.OnClickListener listener = createKeyListener();
+        for(View view : buttons){
+            view.setOnClickListener(listener);
+        }
     }
 
     @Override
@@ -76,5 +105,18 @@ public class SignUpValidationFragment extends AbstractFragment {
                 phoneNumberText.setText(phoneNumber);
             }
         }
+    }
+
+    public View.OnClickListener createKeyListener(){
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Button button = (Button)v;
+                CharSequence value = button.getText();
+                String newValue = phoneNumberText.getText()+value.toString();
+                phoneNumberText.setText(newValue);
+            }
+        };
+
     }
 }

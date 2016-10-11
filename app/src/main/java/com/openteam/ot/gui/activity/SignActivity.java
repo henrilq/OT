@@ -36,5 +36,4 @@ public class SignActivity extends BasicActivity {
             activeFragment.onActivityResult(requestCode, resultCode, data);
         }
     }
-
 }

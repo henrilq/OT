@@ -97,7 +97,7 @@ public class SignUpFragment extends AbstractFragment{
     }
 
     private void signUpValidation(){
-        getAbsActivity().replaceFragment(new SignUpValidationFragment(), R.anim.trans_left_in, R.anim.trans_left_out);
+        getAbsActivity().replaceFragment(new SignUpValidationFragment(), R.anim.trans_left_in, R.anim.trans_left_out, R.anim.trans_right_in, R.anim.trans_right_out);
     }
 
     private void initFacebook(){

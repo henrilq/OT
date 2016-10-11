@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
     <RelativeLayout
+        android:id="@+id/tel_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_margin="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
         android:orientation="horizontal">
 
         <android.support.v7.widget.AppCompatEditText
@@ -17,7 +22,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/phone_number"
             android:maxLines="1"
-            android:maxLength="20"
+            android:maxLength="16"
             android:inputType="phone"
             android:textSize="@dimen/sign_up_validation_phone_text_size"
             android:backgroundTint="@color/dark_ultra_green"
@@ -35,6 +40,186 @@
             android:src="@drawable/back_to_normal"/>
 
     </RelativeLayout>
+
+
+
+    <android.support.percent.PercentRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@id/tel_layout"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="40dp">
+
+
+        <android.support.percent.PercentRelativeLayout
+            android:id="@+id/row_1"
+            android:orientation="horizontal"
+            app:layout_heightPercent="18%"
+            android:layout_width="match_parent"
+            app:layout_marginBottomPercent="5%"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/key_1"
+                android:layout_height="match_parent"
+                app:layout_heightPercent="100%"
+                app:layout_aspectRatio="100%"
+                android:text="1"
+                android:textSize="20sp"
+                android:textColor="@color/dark_green"
+                android:textAlignment="center"
+                android:background="@drawable/circle"/>
+
+            <Button
+                android:id="@+id/key_2"
+                android:layout_height="match_parent"
+                app:layout_heightPercent="100%"
+                app:layout_aspectRatio="100%"
+                android:text="2"
+                android:textSize="20sp"
+                android:textColor="@color/dark_green"
+                android:textAlignment="center"
+                android:background="@drawable/circle"
+                app:layout_marginStartPercent="5%"
+                android:layout_toEndOf="@+id/key_1" />
+
+            <Button
+                android:id="@+id/key_3"
+                android:layout_height="match_parent"
+                app:layout_heightPercent="100%"
+                app:layout_aspectRatio="100%"
+                android:text="3"
+                android:textSize="20sp"
+                android:textColor="@color/dark_green"
+                android:textAlignment="center"
+                android:background="@drawable/circle"
+                app:layout_marginStartPercent="5%"
+                android:layout_toEndOf="@+id/key_2"/>
+
+        </android.support.percent.PercentRelativeLayout>
+
+        <android.support.percent.PercentRelativeLayout
+            android:id="@+id/row_2"
+            android:orientation="horizontal"
+            app:layout_heightPercent="18%"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/row_1"
+            app:layout_marginBottomPercent="5%"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/key_4"
+                android:layout_height="match_parent"
+                app:layout_heightPercent="100%"
+                app:layout_aspectRatio="100%"
+                android:text="4"
+                android:textSize="20sp"
+                android:textColor="@color/dark_green"
+                android:textAlignment="center"
+                android:background="@drawable/circle"/>
+
+            <Button
+                android:id="@+id/key_5"
+                android:layout_height="match_parent"
+                app:layout_heightPercent="100%"
+                app:layout_aspectRatio="100%"
+                android:text="5"
+                android:textSize="20sp"
+                android:textColor="@color/dark_green"
+                android:textAlignment="center"
+                android:background="@drawable/circle"
+                app:layout_marginStartPercent="5%"
+                android:layout_toEndOf="@+id/key_4"/>
+
+            <Button
+                android:id="@+id/key_6"
+                android:layout_height="match_parent"
+                app:layout_heightPercent="100%"
+                app:layout_aspectRatio="100%"
+                android:text="6"
+                android:textSize="20sp"
+                android:textColor="@color/dark_green"
+                android:textAlignment="center"
+                android:background="@drawable/circle"
+                app:layout_marginStartPercent="5%"
+                android:layout_toEndOf="@+id/key_5"/>
+
+        </android.support.percent.PercentRelativeLayout>
+
+        <android.support.percent.PercentRelativeLayout
+            android:id="@+id/row_3"
+            android:orientation="horizontal"
+            app:layout_heightPercent="18%"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/row_2"
+            app:layout_marginBottomPercent="5%"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/key_7"
+                android:layout_height="match_parent"
+                app:layout_heightPercent="100%"
+                app:layout_aspectRatio="100%"
+                android:text="7"
+                android:textSize="20sp"
+                android:textColor="@color/dark_green"
+                android:textAlignment="center"
+                android:background="@drawable/circle"/>
+
+            <Button
+                android:id="@+id/key_8"
+                android:layout_height="match_parent"
+                app:layout_heightPercent="100%"
+                app:layout_aspectRatio="100%"
+                android:text="8"
+                android:textSize="20sp"
+                android:textColor="@color/dark_green"
+                android:textAlignment="center"
+                android:background="@drawable/circle"
+                app:layout_marginStartPercent="5%"
+                android:layout_toEndOf="@+id/key_7"/>
+
+            <Button
+                android:id="@+id/key_9"
+                android:layout_height="match_parent"
+                app:layout_heightPercent="100%"
+                app:layout_aspectRatio="100%"
+                android:text="9"
+                android:textSize="20sp"
+                android:textColor="@color/dark_green"
+                android:textAlignment="center"
+                android:background="@drawable/circle"
+                app:layout_marginStartPercent="5%"
+                android:layout_toEndOf="@+id/key_8"/>
+
+        </android.support.percent.PercentRelativeLayout>
+
+        <android.support.percent.PercentRelativeLayout
+            android:id="@+id/row_4"
+            android:orientation="horizontal"
+            app:layout_heightPercent="18%"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/row_3"
+            app:layout_marginBottomPercent="5%"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/key_0"
+                android:layout_height="match_parent"
+                app:layout_heightPercent="100%"
+                app:layout_aspectRatio="100%"
+                android:text="0"
+                android:textSize="20sp"
+                android:textColor="@color/dark_green"
+                android:textAlignment="center"
+                android:background="@drawable/circle"
+                android:layout_centerInParent="true"/>
+
+        </android.support.percent.PercentRelativeLayout>
+
+    </android.support.percent.PercentRelativeLayout>
 
 
 
