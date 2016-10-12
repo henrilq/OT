@@ -165,7 +165,20 @@ public class SignUpFragment extends AbstractFragment{
                 TwitterSession session = result.data;
                 String msg = "TWITTER : " + session.getUserName() + " logged in! (#" + session.getAuthToken() + ")";
                 Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
-                signUpValidation();
+
+                mTwitterAuthClient.requestEmail(session, new Callback<String>() {
+                    @Override
+                    public void success(Result<String> result) {
+                        Toast.makeText(getActivity(), "email : "+result.data, Toast.LENGTH_LONG).show();
+                        signUpValidation();
+                    }
+
+                    @Override
+                    public void failure(TwitterException exception) {
+                        Toast.makeText(getActivity(), "failed", Toast.LENGTH_LONG).show();
+                    }
+                });
+
             }
             @Override
             public void failure(TwitterException exception) {

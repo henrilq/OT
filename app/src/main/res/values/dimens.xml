@@ -11,4 +11,7 @@
     <dimen name="sign_field_text_size">20sp</dimen>
 
     <dimen name="sign_up_validation_phone_text_size">30sp</dimen>
+    <dimen name="sign_up_confirmation_text_size">20sp</dimen>
+
+
 </resources>

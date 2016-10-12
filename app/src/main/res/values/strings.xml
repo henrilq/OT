@@ -37,6 +37,8 @@
     <string name="sign_in">Sign in</string>
     <string name="sign_up">Sign up</string>
     <string name="confirmation">Confirmation</string>
+    <string name="code_received_by_sms">Code received by sms</string>
+    <string name="send_code_back">Renvoyer le code</string>
 
 
 </resources>

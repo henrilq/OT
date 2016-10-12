@@ -3,7 +3,68 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="20dp">
 
+        <RelativeLayout
+            android:id="@+id/code_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/phone_number_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/code_received_by_sms"
+                android:maxLines="1"
+                android:maxLength="16"
+                android:inputType="numberDecimal"
+                android:textSize="@dimen/sign_up_confirmation_text_size"
+                android:backgroundTint="@color/dark_ultra_green"
+                android:textAlignment="viewStart"
+                android:paddingBottom="@dimen/sign_field_padding_bottom"
+                android:layout_marginBottom="@dimen/sign_field_margin_bottom"
+                android:layout_alignParentStart="true"/>
+
+
+            <ImageView
+                android:id="@+id/delete"
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/back_to_normal"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/ask_for_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="@string/send_code_back"
+            android:textColor="@color/green"
+            android:background="@null"
+            android:layout_marginStart="3dp"
+            android:layout_below="@id/code_layout"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pour valider votre inscription, entrez le code reçu par sms ci-dessus."
+            android:textSize="@dimen/sign_up_confirmation_text_size"
+            android:textColor="@color/dark_green"
+            android:layout_marginStart="3dp"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/sign_up_confirm_confirmation"
@@ -17,4 +78,5 @@
         android:background="@color/dark_green"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"/>
+
 </RelativeLayout>
