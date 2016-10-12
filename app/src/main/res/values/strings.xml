@@ -39,6 +39,8 @@
     <string name="confirmation">Confirmation</string>
     <string name="code_received_by_sms">Code received by sms</string>
     <string name="send_code_back">Renvoyer le code</string>
+    <string name="enable_notification">Enable notifications</string>
+    <string name="welcome">Welcome</string>
 
 
 </resources>

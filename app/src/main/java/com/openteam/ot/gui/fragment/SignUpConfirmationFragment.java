@@ -1,6 +1,5 @@
 package com.openteam.ot.gui.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -9,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.openteam.ot.R;
-import com.openteam.ot.gui.activity.DrawerActivity;
 
 /**
  * Created by zoz on 12/10/2016.
@@ -33,9 +31,7 @@ public class SignUpConfirmationFragment extends AbstractFragment{
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), DrawerActivity.class);
-                startActivity(intent);
-                getActivity().finish();
+                getAbsActivity().replaceFragment(new SignUpWelcomeFragment(), R.anim.trans_left_in, R.anim.trans_left_out, R.anim.trans_right_in, R.anim.trans_right_out);
             }
         });
     }
