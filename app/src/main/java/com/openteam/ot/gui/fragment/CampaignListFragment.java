@@ -11,9 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.openteam.ot.R;
 import com.openteam.ot.gui.activity.CampaignDetailsActivity;
@@ -25,6 +29,7 @@ import com.openteam.ot.service.BackendService;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.fabric.sdk.android.services.concurrency.AsyncTask;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,10 +44,11 @@ public class CampaignListFragment extends AbstractFragment{
     private GridView gridView;
     private List<Campaign> campaigns;
     private CampaignListGridViewAdapter adapter;
-    private Button openBtn;
-    private Button closedBtn;
+    private TextView openBtn;
+    private TextView closedBtn;
     private BackendService backendService;
     private Animation animation;
+    private ImageView loader;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,10 +68,11 @@ public class CampaignListFragment extends AbstractFragment{
 
         animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in);
         gridView.setAnimation(animation);
-        openBtn = (Button) view.findViewById(R.id.open);
+        openBtn = (TextView) view.findViewById(R.id.open);
+        closedBtn = (TextView) view.findViewById(R.id.closed);
 
-        closedBtn = (Button) view.findViewById(R.id.closed);
-
+        loader = (ImageView)view.findViewById(R.id.loader);
+        displayLoader(false);
         updateButtonsColor(null);
         return view;
     }
@@ -102,20 +109,43 @@ public class CampaignListFragment extends AbstractFragment{
     }
 
     private void updateGridView(Call<List<Campaign>> call){
+        final long start = System.currentTimeMillis();
+        clearData();
+        displayLoader(true);
         call.enqueue(new Callback<List<Campaign>>() {
             @Override
             public void onResponse(Call<List<Campaign>> call, Response<List<Campaign>> response) {
-                List<Campaign> campaigns = response.body();
+                final List<Campaign> campaigns = response.body();
                 if(campaigns == null){
                     Log.d(TAG, "No Campaign found");
                 }else{
-                    loadData(campaigns);
+                    new AsyncTask<Void, Void, Void>(){
+                        @Override
+                        protected Void doInBackground(Void... voids) {
+                            long time = System.currentTimeMillis() - start;
+                            if(time < 500){
+                                try {
+                                    Thread.sleep(1000);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                            return null;
+                        }
+
+                        @Override
+                        protected void onPostExecute(Void aVoid) {
+                            loadData(campaigns);
+                            displayLoader(false);
+                        }
+                    }.execute();
                 }
             }
 
             @Override
             public void onFailure(Call<List<Campaign>> call, Throwable t) {
                 Log.e(TAG, t.toString());
+                displayLoader(false);
             }
         });
     }
@@ -138,6 +168,44 @@ public class CampaignListFragment extends AbstractFragment{
             selectedBtn.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.campaign_list_button_selected));
             selectedBtn.setTextColor(Color.WHITE);
         }
+    }
+
+    private void updateButtonsColor(TextView selectedBtn){
+        openBtn.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.campaign_list_button_unselected));
+        closedBtn.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.campaign_list_button_unselected));
+        openBtn.setTextColor(ContextCompat.getColor(getActivity(), R.color.btnUnselectedTextColor));
+        closedBtn.setTextColor(ContextCompat.getColor(getActivity(), R.color.btnUnselectedTextColor));
+
+        if (selectedBtn != null){
+            selectedBtn.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.campaign_list_button_selected));
+            selectedBtn.setTextColor(Color.WHITE);
+        }
+    }
+
+    private Animation createRotateAnimation(){
+        RotateAnimation rotate = new RotateAnimation(0, 360,
+                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
+                0.5f);
+        rotate.setDuration(1000);
+        rotate.setInterpolator(new LinearInterpolator());
+        rotate.setRepeatCount(Animation.INFINITE);
+        return rotate;
+    }
+
+    private void displayLoader(boolean display){
+        if(display){
+            loader.setVisibility(View.VISIBLE);
+            loader.setAnimation(createRotateAnimation());
+        }else{
+            loader.setAnimation(null);
+            loader.setVisibility(View.INVISIBLE);
+        }
+    }
+
+
+    private void clearData(){
+        this.campaigns.clear();
+        adapter.notifyDataSetChanged();
     }
 
     private void loadData(List<Campaign> campaigns){

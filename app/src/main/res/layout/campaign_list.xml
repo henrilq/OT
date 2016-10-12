@@ -11,34 +11,53 @@
 
         android:orientation="horizontal">
 
-        <Button
+        <TextView
             android:id="@+id/open"
             android:layout_height="wrap_content"
             android:layout_weight=".5"
             android:layout_width="0dip"
             android:text="@string/campaign_list_open_btn"
-            android:background="@drawable/campaign_list_button_selected"
-            android:textSize="12sp"
-            android:layout_marginRight="5dp"
+            android:textSize="15sp"
+            android:textAlignment="center"
+            android:background="@drawable/campaign_list_button_unselected"
+            android:layout_marginEnd="5dp"
+            android:padding="15dp"
             />
 
-        <Button
+        <TextView
             android:id="@+id/closed"
             android:layout_height="wrap_content"
             android:layout_weight=".5"
             android:layout_width="0dip"
             android:text="@string/campaign_list_closed_btn"
-            android:textSize="12sp"
-            android:layout_marginLeft="5dp"/>
+            android:textSize="15sp"
+            android:textAlignment="center"
+            android:background="@drawable/campaign_list_button_unselected"
+            android:layout_marginStart="5dp"
+            android:padding="15dp"/>
     </LinearLayout>
 
-    <GridView
-        android:id="@+id/grid"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:horizontalSpacing="10dp"
-        android:verticalSpacing="10dp"
-        android:numColumns="2"
-        android:layout_margin="10dp">
-    </GridView>
+        android:layout_height="match_parent">
+
+        <GridView
+            android:id="@+id/grid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:horizontalSpacing="10dp"
+            android:verticalSpacing="10dp"
+            android:numColumns="2"
+            android:layout_margin="10dp">
+        </GridView>
+
+        <ImageView
+            android:id="@+id/loader"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/spinner_refresh"
+            android:layout_centerInParent="true"
+            android:visibility="invisible"/>
+    </RelativeLayout>
+
 </LinearLayout>

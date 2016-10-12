@@ -106,7 +106,7 @@
         android:layout_height="wrap_content"
         android:padding="15dp"
         android:textSize="20sp"
-        android:text="@string/gen_confirm"
+        android:text="@string/confirm"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:background="@color/dark_green"

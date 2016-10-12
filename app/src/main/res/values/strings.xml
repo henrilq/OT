@@ -28,9 +28,8 @@
     <string name="welcome_disable_notification">I don\'t want to be informed by notification</string>
 
 
-    <string name="gen_continue">Continue ></string>
-    <string name="gen_confirm">Confirm ></string>
-
+    <string name="gen_continue">Continue</string>
+    <string name="confirm">Confirm</string>
 
     <string name="surname">Surname</string>
     <string name="name">Name</string>
