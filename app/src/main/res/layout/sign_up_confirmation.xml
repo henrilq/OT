@@ -40,6 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/delete_back_arrow_margin_end"
                 android:src="@drawable/back_to_normal"/>
 
         </RelativeLayout>
