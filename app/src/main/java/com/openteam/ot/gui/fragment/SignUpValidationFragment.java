@@ -3,11 +3,14 @@ package com.openteam.ot.gui.fragment;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -80,9 +83,26 @@ public class SignUpValidationFragment extends AbstractFragment {
                 }
             }
         });
-        View.OnClickListener listener = createKeyListener();
-        for(View view : buttons){
-            view.setOnClickListener(listener);
+
+        for(final View view : buttons){
+            final Button button = (Button)view;
+            button.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    switch(event.getAction()) {
+                        case MotionEvent.ACTION_DOWN:
+                            button.setBackground(ContextCompat.getDrawable(getAbsActivity(),R.drawable.circle_selected));
+                            button.setTextColor(Color.WHITE);
+                            addNumberToText(button.getText());
+                            return false;
+                        case MotionEvent.ACTION_UP:
+                            button.setBackground(ContextCompat.getDrawable(getAbsActivity(),R.drawable.circle));
+                            button.setTextColor(ContextCompat.getColor(getActivity(),R.color.dark_green));
+                            return false;
+                    }
+                    return false;
+                }
+            });
         }
     }
 
@@ -103,16 +123,13 @@ public class SignUpValidationFragment extends AbstractFragment {
         }
     }
 
-    public View.OnClickListener createKeyListener(){
-        return new View.OnClickListener() {
+    private void addNumberToText(final CharSequence value){
+        handler.post(new Runnable() {
             @Override
-            public void onClick(View v) {
-                Button button = (Button)v;
-                CharSequence value = button.getText();
+            public void run() {
                 String newValue = phoneNumberText.getText()+value.toString();
                 phoneNumberText.setText(newValue);
             }
-        };
-
+        });
     }
 }

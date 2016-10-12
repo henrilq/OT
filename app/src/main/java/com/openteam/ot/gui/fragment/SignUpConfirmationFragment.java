@@ -31,7 +31,7 @@ public class SignUpConfirmationFragment extends AbstractFragment{
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getAbsActivity().replaceFragment(new SignUpWelcomeFragment(), R.anim.trans_left_in, R.anim.trans_left_out, R.anim.trans_right_in, R.anim.trans_right_out);
+                getAbsActivity().replaceFragment(new SignUpWelcomeFragment());
             }
         });
     }

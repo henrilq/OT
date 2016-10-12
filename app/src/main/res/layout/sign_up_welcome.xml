@@ -1,20 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginStart="15dp"
-    android:layout_marginEnd="15dp">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/enable_notification"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:textSize="20sp"
-        android:text="@string/enable_notification"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:background="@drawable/round_corner_dark_green"
-        android:layout_centerInParent="true"/>
+        android:layout_height="match_parent"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp">
 
+        <TextView
+            android:id="@+id/enable_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:textSize="20sp"
+            android:text="@string/enable_notification"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:background="@drawable/round_corner_dark_green"
+            android:layout_centerInParent="true"/>
+
+        <TextView
+            android:id="@+id/informed_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:text="Pour être informé des nouvelles campagnes (3 fois par mois), activez les notiifcations"
+            android:textAlignment="center"
+            android:textColor="@color/dark_green"
+            android:layout_above="@id/enable_notification"
+            android:layout_marginBottom="30dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:textSize="18sp"
+            android:text="Your inscription on 0 has been confirmed !"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/dark_green"
+            android:layout_above="@id/informed_text"
+            android:layout_marginBottom="30dp"/>
+
+        <TextView
+            android:id="@+id/disable_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:text="I don't want to be informed by notification"
+            android:textAlignment="center"
+            android:textColor="@color/dark_ultra_green"
+            android:layout_below="@id/enable_notification"
+            android:layout_marginTop="30dp"
+            />
+    </RelativeLayout>
 </RelativeLayout>
