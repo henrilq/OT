@@ -16,6 +16,7 @@ import com.openteam.ot.gui.fragment.AbstractFragment;
 
 public abstract class AbstractActivity extends AppCompatActivity {
 
+    private boolean lockBackPressed;
 
     protected Handler handler;
 
@@ -58,6 +59,17 @@ public abstract class AbstractActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         initListeners();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(! lockBackPressed){
+            super.onBackPressed();
+        }
+    }
+
+    public void setLockBackPressed(boolean lockBackPressed) {
+        this.lockBackPressed = lockBackPressed;
     }
 
     protected abstract void initListeners();

@@ -24,6 +24,8 @@ public class SignUpWelcomeFragment extends AbstractFragment{
         View view =  inflater.inflate(R.layout.sign_up_welcome,container,false);
         getBasicActivity().getToolbarTitle().setText(getResources().getString(R.string.welcome).toUpperCase());
         enableNotification = view.findViewById(R.id.enable_notification);
+        getBasicActivity().getArrow().setVisibility(View.INVISIBLE);
+        getBasicActivity().setLockBackPressed(true);
         return view;
     }
 

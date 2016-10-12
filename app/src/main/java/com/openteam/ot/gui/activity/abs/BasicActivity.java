@@ -20,6 +20,7 @@ public abstract class BasicActivity extends AbstractActivity {
     protected TextView toobarTitle;
     protected ImageButton arrow;
 
+
     public BasicActivity(){
 
     }
@@ -77,4 +78,9 @@ public abstract class BasicActivity extends AbstractActivity {
     public TextView getToolbarTitle() {
         return toobarTitle;
     }
+
+    public ImageButton getArrow() {
+        return arrow;
+    }
+
 }
