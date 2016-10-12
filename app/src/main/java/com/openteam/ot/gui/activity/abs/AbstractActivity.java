@@ -1,5 +1,6 @@
 package com.openteam.ot.gui.activity.abs;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.AnimRes;
@@ -17,6 +18,8 @@ import com.openteam.ot.gui.fragment.AbstractFragment;
 public abstract class AbstractActivity extends AppCompatActivity {
 
     private boolean lockBackPressed;
+
+    private AbstractFragment activeFragment;
 
     protected Handler handler;
 
@@ -56,6 +59,15 @@ public abstract class AbstractActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //Nasty but it works ! (needed with facebook & twitter buttons)
+        if(activeFragment != null && activeFragment.isVisible()){
+            activeFragment.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    @Override
     public void onStart() {
         super.onStart();
         initListeners();
@@ -82,5 +94,7 @@ public abstract class AbstractActivity extends AppCompatActivity {
 
     protected abstract int getContentView();
 
-
+    public void setActiveFragment(AbstractFragment activeFragment) {
+        this.activeFragment = activeFragment;
+    }
 }

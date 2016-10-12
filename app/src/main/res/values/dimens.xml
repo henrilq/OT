@@ -16,6 +16,8 @@
 
     <dimen name="delete_back_arrow_margin_end">3dp</dimen>
 
+    <dimen name="sign_small_text_size">13sp</dimen>
+
 
 
 </resources>

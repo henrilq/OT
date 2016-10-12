@@ -125,7 +125,7 @@ public class CampaignListFragment extends AbstractFragment{
     }
 
     protected Call<List<Campaign>> getClosedCampaigns(){
-        return backendService.getClosedCompaigns();
+        return backendService.getClosedCampaigns();
     }
 
     private void updateButtonsColor(Button selectedBtn){

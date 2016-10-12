@@ -26,33 +26,8 @@
                 android:layout_marginBottom="10dp"
                 android:text="@string/or" />
 
-
             <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/surname"
-                android:maxLines="1"
-                android:inputType="text"
-                android:textSize="@dimen/sign_field_text_size"
-                android:backgroundTint="@color/dark_ultra_green"
-                android:paddingBottom="@dimen/sign_field_padding_bottom"
-                android:layout_marginBottom="@dimen/sign_field_margin_bottom"/>
-
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/text2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/name"
-                android:maxLines="1"
-                android:inputType="text"
-                android:textSize="@dimen/sign_field_text_size"
-                android:backgroundTint="@color/dark_ultra_green"
-                android:paddingBottom="@dimen/sign_field_padding_bottom"
-                android:layout_marginBottom="@dimen/sign_field_margin_bottom"/>
-
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/text3"
+                android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/email"
@@ -75,26 +50,24 @@
                 android:paddingBottom="@dimen/sign_field_padding_bottom"
                 android:layout_marginBottom="@dimen/sign_field_margin_bottom"/>
 
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/text5"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/city_country"
-                android:maxLines="1"
-                android:inputType="text"
-                android:textSize="@dimen/sign_field_text_size"
-                android:backgroundTint="@color/dark_ultra_green"
-                android:paddingBottom="@dimen/sign_field_padding_bottom"
-                android:layout_marginBottom="@dimen/sign_field_margin_bottom"/>
-
+                android:layout_gravity="start"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="3dp"
+                android:textStyle="bold"
+                android:textSize="@dimen/sign_small_text_size"
+                android:textColor="@color/dark_green"
+                android:text="@string/forgot_password" />
 
             <TextView
-                android:id="@+id/sign_in"
+                android:id="@+id/sign_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="@string/sign_in" />
+                android:layout_marginTop="30dp"
+                android:text="@string/sign_up" />
 
         </LinearLayout>
 

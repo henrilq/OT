@@ -2,6 +2,7 @@ package com.openteam.ot.gui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.AppCompatEditText;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.openteam.ot.R;
 public class SignUpConfirmationFragment extends AbstractFragment{
 
     private TextView confirmBtn;
+    private AppCompatEditText codeInput;
 
     @Nullable
     @Override
@@ -23,6 +25,8 @@ public class SignUpConfirmationFragment extends AbstractFragment{
         View view =  inflater.inflate(R.layout.sign_up_confirmation,container,false);
         getBasicActivity().getToolbarTitle().setText(getResources().getString(R.string.confirmation).toUpperCase());
         confirmBtn = (TextView) view.findViewById(R.id.sign_up_confirm_confirmation);
+        codeInput = (AppCompatEditText) view.findViewById(R.id.code);
+        codeInput.requestFocus();
         return view;
     }
 

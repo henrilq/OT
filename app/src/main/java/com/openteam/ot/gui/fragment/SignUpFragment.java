@@ -48,6 +48,7 @@ public class SignUpFragment extends AbstractFragment{
     private TextView confirmBtn;
     private ImageView facebookBtn;
     private ImageView twitterBtn;
+    private TextView signInBtn;
     private CallbackManager facebookCallbackManager;
     private TwitterAuthClient mTwitterAuthClient;
 
@@ -62,6 +63,7 @@ public class SignUpFragment extends AbstractFragment{
         facebookBtn = (ImageView) view.findViewById(R.id.facebook);
         twitterBtn = (ImageView) view.findViewById(R.id.twitter);
         facebookBtn = (ImageView) view.findViewById(R.id.facebook);
+        signInBtn = (TextView) view.findViewById(R.id.sign_in);
         return view;
     }
 
@@ -93,6 +95,13 @@ public class SignUpFragment extends AbstractFragment{
             @Override
             public void onClick(View v) {
                 mTwitterAuthClient.authorize(getActivity(), createTwitterCallback());
+            }
+        });
+
+        signInBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getAbsActivity().replaceFragment(new SignInFragment());
             }
         });
     }

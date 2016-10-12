@@ -30,6 +30,13 @@ public abstract class AbstractFragment extends Fragment{
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        //register active fragment in activity
+        getAbsActivity().setActiveFragment(this);
+    }
+
+    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }

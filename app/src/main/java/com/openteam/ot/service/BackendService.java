@@ -20,7 +20,7 @@ public interface BackendService {
     Call<Campaign> getCampaign(@Path("id") int id);
 
     @GET("/projects/closed")
-    Call<List<Campaign>> getClosedCompaigns();
+    Call<List<Campaign>> getClosedCampaigns();
 
     @GET("/projects/open")
     Call<List<Campaign>> getOpenCampaigns();

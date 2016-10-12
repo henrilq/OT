@@ -23,6 +23,11 @@
     <string name="payment_confirmation_thanks">Merci d\'avoir soutenu le projet :</string>
     <string name="payment_confirmation_title">Spiral farm house</string>
 
+    <string name="welcome_inscription_confirmed">Your inscription on 0 has been confirmed !</string>
+    <string name="welcome_notification_description">Pour être informé des nouvelles campagnes (3 fois par mois), activez les notiifcations</string>
+    <string name="welcome_disable_notification">I don\'t want to be informed by notification</string>
+
+
     <string name="gen_continue">Continue ></string>
     <string name="gen_confirm">Confirm ></string>
 
@@ -41,6 +46,7 @@
     <string name="send_code_back">Renvoyer le code</string>
     <string name="enable_notification">Enable notifications</string>
     <string name="welcome">Welcome</string>
+    <string name="forgot_password">Forgot your password ?</string>
 
 
 </resources>
