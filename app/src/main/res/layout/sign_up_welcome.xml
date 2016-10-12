@@ -14,7 +14,7 @@
         android:text="@string/enable_notification"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:background="@color/dark_green"
+        android:background="@drawable/round_corner_dark_green"
         android:layout_centerInParent="true"/>
 
 </RelativeLayout>
