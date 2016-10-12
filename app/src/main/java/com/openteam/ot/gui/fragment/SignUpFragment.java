@@ -57,6 +57,7 @@ public class SignUpFragment extends AbstractFragment{
         initFacebook();
         initTwitter();
         View view =  inflater.inflate(R.layout.sign_up,container,false);
+        getBasicActivity().getToolbarTitle().setText(getResources().getString(R.string.sign_up).toUpperCase());
         confirmBtn = (TextView) view.findViewById(R.id.sign_up_confirm);
         facebookBtn = (ImageView) view.findViewById(R.id.facebook);
         twitterBtn = (ImageView) view.findViewById(R.id.twitter);

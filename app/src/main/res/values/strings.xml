@@ -36,6 +36,7 @@
     <string name="or">Or :</string>
     <string name="sign_in">Sign in</string>
     <string name="sign_up">Sign up</string>
+    <string name="confirmation">Confirmation</string>
 
 
 </resources>

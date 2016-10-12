@@ -93,7 +93,7 @@ public class CampaignDetailsFragment extends AbstractFragment{
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        //title.setText(campaign.getProject_title().toUpperCase());
+                        //toobarTitle.setText(campaign.getProject_title().toUpperCase());
                         subtitle.setText(campaign.getProject_title());
                         country.setText(campaign.getCountry());
                         mission.setText(campaign.getMission());

@@ -35,7 +35,7 @@ public class DrawerActivity extends AbstractActivity implements NavigationView.O
         setSupportActionBar(toolbar);
         toolbarTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
 
-        //remove default title
+        //remove default toobarTitle
         getSupportActionBar().setTitle("");
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

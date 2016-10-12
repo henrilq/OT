@@ -17,7 +17,7 @@ public abstract class BasicActivity extends AbstractActivity {
 
     private static final String TAG = "BasicActivity";
     protected Toolbar toolbar;
-    protected TextView title;
+    protected TextView toobarTitle;
     protected ImageButton arrow;
 
     public BasicActivity(){
@@ -35,8 +35,8 @@ public abstract class BasicActivity extends AbstractActivity {
         toolbar.setContentInsetsAbsolute(0, 0);
         toolbar.setPadding(0,0,0,0);//for tab otherwise give space in tab
 
-        title = (TextView) toolbar.findViewById(R.id.toolbar_title);
-        title.setText(getResources().getString(R.string.title_campaigns_list).toUpperCase());
+        toobarTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+        toobarTitle.setText(getResources().getString(R.string.title_campaigns_list).toUpperCase());
         arrow = (ImageButton) toolbar.findViewById(R.id.arrow);
 
     }
@@ -72,5 +72,9 @@ public abstract class BasicActivity extends AbstractActivity {
     public void onBackPressed() {
         super.onBackPressed();
         BasicActivity.this.overridePendingTransition(0, R.anim.splash_fade_out);
+    }
+
+    public TextView getToolbarTitle() {
+        return toobarTitle;
     }
 }

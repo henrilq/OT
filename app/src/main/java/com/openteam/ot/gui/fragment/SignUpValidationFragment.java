@@ -2,7 +2,6 @@ package com.openteam.ot.gui.fragment;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.openteam.ot.R;
-import com.openteam.ot.gui.activity.DrawerActivity;
 import com.openteam.ot.utils.PermissionUtils;
 
 import java.util.ArrayList;
@@ -39,7 +37,7 @@ public class SignUpValidationFragment extends AbstractFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.sign_up_validation,container,false);
-
+        getBasicActivity().getToolbarTitle().setText(getResources().getString(R.string.sign_up).toUpperCase());
         phoneNumberText = (TextView) view.findViewById(R.id.phone_number_text);
         confirm = (TextView) view.findViewById(R.id.sign_up_confirm_validation);
         deleteBtn = (ImageView) view.findViewById(R.id.delete);
@@ -68,9 +66,7 @@ public class SignUpValidationFragment extends AbstractFragment {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), DrawerActivity.class);
-                startActivity(intent);
-                getActivity().finish();
+                getAbsActivity().replaceFragment(new SignUpConfirmationFragment(), R.anim.trans_left_in, R.anim.trans_left_out, R.anim.trans_right_in, R.anim.trans_right_out);
             }
         });
 

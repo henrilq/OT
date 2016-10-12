@@ -23,7 +23,7 @@ public class SignActivity extends BasicActivity {
         super.onCreate(savedInstanceState);
         RelativeLayout layout = (RelativeLayout) toolbar.findViewById(R.id.basic_toolbar);
         layout.setBackground(ContextCompat.getDrawable(this,R.drawable.sign_bar));
-        title.setText(getResources().getString(R.string.sign_up).toUpperCase());
+        toobarTitle.setText(getResources().getString(R.string.sign_up).toUpperCase());
         activeFragment = new SignUpFragment();
         replaceFragment(activeFragment);
     }

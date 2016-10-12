@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
 import com.openteam.ot.gui.activity.abs.AbstractActivity;
+import com.openteam.ot.gui.activity.abs.BasicActivity;
 
 /**
  * Created by zoz on 04/10/2016.
@@ -41,5 +42,9 @@ public abstract class AbstractFragment extends Fragment{
 
     protected AbstractActivity getAbsActivity(){
         return (AbstractActivity) getActivity();
+    }
+
+    protected BasicActivity getBasicActivity(){
+        return (BasicActivity) getActivity();
     }
 }

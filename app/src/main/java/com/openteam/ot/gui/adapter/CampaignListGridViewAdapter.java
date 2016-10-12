@@ -58,7 +58,7 @@ public class CampaignListGridViewAdapter extends BaseAdapter{
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
-                            //insert title
+                            //insert toobarTitle
                             title.setText(campaign.getCampaign_title());
 
                             //insert description
