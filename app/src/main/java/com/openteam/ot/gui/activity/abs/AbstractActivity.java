@@ -32,26 +32,23 @@ public abstract class AbstractActivity extends AppCompatActivity {
 
     public void replaceFragment(final AbstractFragment fragment, @AnimRes int enter,
                                 @AnimRes int exit){
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(enter, exit);
-        transaction.replace(getReplaceableFragmentContainerId(), fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        replaceFragment(fragment, getReplaceableFragmentContainerId(), enter, exit, 0, 0);
     }
 
     public void replaceFragment(final AbstractFragment fragment, @AnimRes int enter,
                                 @AnimRes int exit, @AnimRes int popEnter, @AnimRes int popExit){
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(enter, exit,popEnter, popExit);
-        transaction.replace(getReplaceableFragmentContainerId(), fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        replaceFragment(fragment, getReplaceableFragmentContainerId(), enter, exit, popEnter, popExit);
     }
 
     public void replaceFragment(final AbstractFragment fragment, @IdRes int containerViewId, @AnimRes int enter,
                                 @AnimRes int exit){
+        replaceFragment(fragment, containerViewId, enter, exit, 0, 0);
+    }
+
+    public void replaceFragment(final AbstractFragment fragment, @IdRes int containerViewId, @AnimRes int enter,
+                                @AnimRes int exit, @AnimRes int popEnter, @AnimRes int popExit){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(enter, exit);
+        transaction.setCustomAnimations(enter, exit,popEnter, popExit);
         transaction.replace(containerViewId, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
